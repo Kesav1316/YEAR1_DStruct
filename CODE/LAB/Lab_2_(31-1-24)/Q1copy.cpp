@@ -2,22 +2,28 @@
 #include <stdlib.h>
 
 int main() {
-    int *a,*n,*element,*i;
-    n = (int *)malloc(sizeof(int));
+    int *a,*size,*element,*i;
+    size = (int *)malloc(sizeof(int));
     element = (int *)malloc(sizeof(int));
     i = (int *)malloc(sizeof(int));
+    printf("Enter number of elements ");
+    scanf("%d",size);
+    a = (int *)malloc(sizeof(int) * (*size));
+
+    for ( *i = 0 ; *i < *size ; (*i)++) {
+        printf("Enter %d element",*i + 1);
+        scanf("%d",(a + (*i)));
+    }
     printf("Enter a element to search ");
     scanf("%d",element);
-    for( int i = 0 ; i < size ; i ++ ) {
-        if(a[i] == element) {
-            printf("ELEMENT FOUND");
-            count = 0;
+    for(*i = 0 ; *i < *size ; (*i )++ ) {
+        if(*(a + (*i)) == *element) {
+            printf("ELEMENT FOUND in %d\n",(*i) + 1);
+            return 0;
         }
         
     }
-    if(count == 1) {
-        printf("ELEMENT NOTFOUND");
-    }
+    printf("Element not found\n");
 
 
 
