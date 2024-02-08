@@ -110,11 +110,8 @@ int main()
             int searchelement;
             printf("Enter the element to search in the list ");
             scanf("%d",&searchelement);
-            if(l1.search(searchelement)) {
-                printf("Found");
-            }
-            else {
-                printf("Not found");
+            if(!l1.search(searchelement)) {
+                printf("Not Found");
             }
             break;
         case 8:
@@ -243,12 +240,10 @@ int List::search(int searchelement) {
     for(int i = 0 ; i< (cur + 1) ; i++) {
         if(arr[i] == searchelement) {
             printf("The element %d is found in the %d position",searchelement,i);
-            break;
-        }
-        else {
-            return 0;
+            return 1;
         }
     }
+    return 0;
 }
 
 //Method to display the contents of the list
