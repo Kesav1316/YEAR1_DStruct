@@ -1,3 +1,4 @@
+// Write a C++ program to search for the presence of a number in an array.
 #include <stdio.h>
 #include <stdlib.h>
 
