@@ -28,9 +28,9 @@ int main()
     int app;
     while (1)
     {
-        //getchar();
-        //getchar();
-        //system("clear");
+        getchar();
+        getchar();
+        system("clear");
         printf("\nEnter \n1. Insert Begin\n2. Append\n3. Insert Position");
         printf("\n4. Delete Begin\n5. Pop\n6. Delete Position");
         printf("\n7. Search\n8. Display\n9. Exit");
@@ -172,7 +172,7 @@ int List::append(int num) {
         
     }
 }
-//Method to insert a value in its position and shifting the previous values to the right
+//Method to insert a value in its position and shifting the previous values to the rightbrave
 int List::insertpos(int num , int pos) {
     if(pos > cur + 1 || pos > SIZE) {
         return 0;
@@ -182,8 +182,9 @@ int List::insertpos(int num , int pos) {
         arr[0] = num;
         return 1;
     }
+
     else {
-        for(int i=cur;i>=pos;i--){
+        for(int i=cur;i>=pos;i--){ // If cur < pos for loop will not be triggered and the value will automatically be appended
             arr[i+1]=arr[i];
         }
         cur = cur + 1;
@@ -193,13 +194,13 @@ int List::insertpos(int num , int pos) {
     }
 }
 
-//Method to delete the beginning value
+//Method to delete the beginning value  
 int List::deletebeg() {
     if(cur == -1) {
         return 0; // LIST EMPTY
     }
     else {
-        for(int i = 0;i <cur + 1 ; i++) {
+        for(int i = 0;i < cur + 1 ; i++) {
             arr[i] = arr[i+1];
 
         }
@@ -215,7 +216,7 @@ int List::pop() {
         return 0;
     }
     else {
-        arr[cur] = NULL;
+        //arr[cur] = 0; //0 ACTS AS SPECIAL NUMBER AND USER CANNOT ADD 0 TO THE LIST HEREAFTER 
         cur = cur - 1;
 
     }

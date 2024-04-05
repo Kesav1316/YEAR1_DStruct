@@ -1,0 +1,2 @@
+
+    char string[100];
