@@ -43,6 +43,7 @@ int main() {
             break;
 
         case 4:
+            printf("PROGRAM ENDED\n");
             return 0;
 
         default:

@@ -119,6 +119,7 @@ int main(){
                 printf("\nAnswer %d",int(l.pop()));
                 break;
             case 4:
+                printf("PROGRAM ENDED\n");
                 return 0;
             default:
                 printf("Enter a valid choice.");

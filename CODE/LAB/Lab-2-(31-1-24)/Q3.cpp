@@ -6,67 +6,30 @@
       1.2.2) otherwise, set the current location as the ending point and repeat 1 (array search size reduces by 1/2)
        1.2.3) If there are no more elements to be searched, then return that the roll number is not present in the array.
 */
-
 #include <stdio.h>
 #include <stdlib.h>
 
-void ascending(int *a,int *n) {
-    int i,j,*tmp;
-    tmp = (int *)malloc(sizeof(int));
-    for( i = 0 ; i < *n-1 ; (i)++) {
-        for( j = 0 ; j < *n-1 ; (j)++) {
-            if ( *(a + (j)) > *(a + (j + 1))) {
-                *tmp = *(a + (j));
-                *(a + (j)) = *(a + (j + 1));
-                *(a + (j + 1)) = *tmp;
-            }
-        }
-    }
-}
-
-int *search(int *array,int *n,int *find){
-    int begg,end,*mid;
-    begg = 0;
-    end = *n;
-    while(begg <= end){
-        *mid = (int)((begg + end) /2);
-        if(*(array + *mid) == *find){
-            printf("ROLL NUMBER FOUND IN %d\n",*mid + 1);
-            return mid;
-        }
-        else {
-            if(*(array + *mid) < *find){
-                begg = *mid  + 1;
-            }else{
-                end = *mid - 1;
-            }
-        }
-    }
-    printf("ROLL NUMBER NOT FOUND\n");
-    return mid;
-}
-
-
 int main(){
-    int i,*n,*a,*rollno;
+    int *arr,*n,*search,*i;
     n = (int *)malloc(sizeof(int));
-
-    printf("Enter the number of students : ");
+    search = (int *)malloc(sizeof(int));
+    i = (int *)malloc(sizeof(int));
+    printf("Enter the size of the array ");
     scanf("%d",n);
-
-    rollno = (int *)malloc(sizeof(int));
-    a = (int *)malloc(sizeof(int) * (*n));
-
-    for( i = 0; i<*n ; i++ ) {
-        printf("ENTER ROLL NUMBER %d ",i + 1);
-        scanf("%d",(a + i)); 
+    arr = (int *)malloc(sizeof(int) * (*n));
+    for(*i  = 0 ; *i<*n ; (*i)++){
+        printf("Enter the number in arr[%d] ",(*i) + 1);
+        scanf("%d",(arr + (*i)));
     }
-    ascending(a,n);
-
-
-    printf("\nENTER ROLL NUMBER TO SEARCH: ");
-    scanf("%d",rollno);
-    search(a,n,rollno);
+    printf("Enter the number to search ");
+    scanf("%d",search);
+    for(*i = 0 ; *i < *n ; (*i)++){
+        if(*(arr + (*i)) == *search){
+            printf("Element is at %d position\n",*i + 1);
+            return 0;
+        }
+    }
+    printf("Element not found \n");
     return 0;
 
 }

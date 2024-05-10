@@ -1,102 +1,102 @@
-/*
-An operating system allocates a fixed time slot CPU time for processes using a round-robin scheduling algorithm. The fixed time slot will be initialized before the start of the menu-driven program. Implement the round-robin scheduling algorithm using the circular List ADT. Implement the program by including the appropriate header file. It consists of the following operations.
-
-1. Insert Process
-2. Execute
-3. Exit
-
-The "Insert Process" will get an integer time from the user and add it to the List.
-
-The "Execute" operation will execute a deList operation and subtract the fixed time from the process. If the processing time falls below 0 then the process is considered to have completed its execution, otherwise, the remaining time after subtraction is enListd back into the circular ADT.
-
-What is the time complexity of each of the operations?
-*/
+//program to implement cpu timeslot
 #include<stdio.h>
 #include<stdlib.h>
-
-class List {
-    struct node {
-        int data;
-        struct node *next;
-    };
-    struct node *head;
-    struct node *tail;
-    int top;
-    public:
-        List() {
-            head=NULL;
-            tail=NULL;
-            top=-1;
-        }
-        int enqueue(int);
-        int dequeue();
-        int pop();
-        int check();
-        void peek();
+#define timeslot 25
+class queue
+{
+  
+  struct node 
+  {
+    
+    int data;
+    struct node *next;
+   
+  };
+    struct node *front;
+    struct node *rear;
+  
+  public:
+  queue()
+  {
+   front=NULL;
+   rear=NULL;
+   
+  }
+  int enqueue(int num);
+  int dequeue();
+  
 };
 
-
-//Function to push to the list.
-//Time complexity => O(1)
-int List::enqueue(int num) {
-    struct node *newnode=(struct node*)malloc(sizeof(struct node));
+//Method to insert an element in the queue
+int queue::enqueue(int num)
+{
+  struct node *newnode=(struct node *)malloc(sizeof(struct node));
+  if(front==NULL)
+  {
     newnode->data=num;
-
-    if(head!=NULL) {
-        tail->next=newnode;
-    }
-
-    else {
-        head=newnode;
-    }
-
-    tail=newnode;  
-    top++;
+    newnode->next=newnode;
+    front=newnode;
+    rear=newnode;
     return 1;
-}
-
-//Function to pop of the list.
-//Time complexity => O(1)
-int List::dequeue() {
-    if(head==NULL) {
-        return 0;
-    }
-    
-    struct node *add;
-    add=head;
-    head=add->next;
-    free(add);
-    top--;
+  }
+  else
+  {
+    newnode->data=num;
+    newnode->next=front;
+    rear->next=newnode;
+    rear=newnode;
     return 1;
+  }
 }
 
-//Function to pop queue
-//Time complexity => O(1)
-int List::pop() {
-    struct node *add;
-    add=head;
-    head=add->next;
-    int data=add->data;
-    free(add);
-    top--;
-    return data;
-}
-
-//Function to check if the queue is empty
-int List::check() {
-    if(head==NULL) {
-        return 0;
+// Method to delete an element from the queue
+int queue:: dequeue()
+{
+  
+  if(front==NULL)
+  {
+    return 0;
+  }
+  else
+  {
+    if(front->data-timeslot<=0)
+    {
+      if(front==rear)
+      {
+        front=NULL;
+        rear=NULL;
+        return 1;
+      }
+      else
+      {
+        struct node *temp=front;
+        front=front->next;
+        rear->next=front;
+        free(temp);
+        temp=NULL;
+        return 1;
+      }
+      
     }
-    return 1;
-}
-
-//Function to print the peek of the queue.
-//Time complexity => O(1)
-void List::peek() {
-    if(head==NULL) {
-        printf("Stack is empty");
+    else
+    {
+      int time;
+      time=front->data-timeslot;
+      if(front==rear)
+      {
+        front=NULL;
+        rear=NULL;
+      }
+      else
+      {
+        struct node *temp=front;
+        front=front->next;
+        rear->next=front;
+        free(temp);
+        temp=NULL;
+      }
+      enqueue(time);
+      return 1;
     }
-    else {
-        printf("The value at the top of the List is %d", head->data);
-    }
+  }
 }

@@ -53,10 +53,10 @@ int main() {
             
             case 2:
                 if(l1.dequeue()) {
-                    printf("\n Succesful.\n");
+                    printf("\n Dequeue Succesful.\n");
                 }
                 else {
-                    printf("\n Stack empty.\n");
+                    printf("\n Queue empty.\n");
                 }
                 break;
 
@@ -65,6 +65,7 @@ int main() {
                 break;
 
             case 4:
+                printf("PROGRAM ENDED\n");
                 return 0;
 
         }
@@ -142,7 +143,7 @@ void queue::peek() {
         printf("Stack empty.");
     }
     else {
-        printf("%d",arr[front]);
+        printf("The peek is %d\n",arr[front]);
     }
 
 }

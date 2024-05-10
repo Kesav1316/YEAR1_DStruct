@@ -28,9 +28,6 @@ int main()
     int app;
     while (1)
     {
-        getchar();
-        getchar();
-        system("clear");
         printf("\nEnter \n1. Insert Begin\n2. Append\n3. Insert Position");
         printf("\n4. Delete Begin\n5. Pop\n6. Delete Position");
         printf("\n7. Search\n8. Display\n9. Exit");
@@ -39,11 +36,11 @@ int main()
         switch (choice)
         {
         case 1:
-            printf("\n Enter the number insert:");
+            printf("\n Enter the number to insert ");
             scanf("%d",&num);
             if(l1.insertbeg(num))
             {
-                printf("\n %d successfully inserted.",num);
+                printf("\n %d inserted.",num);
             }
             else
             {
@@ -51,10 +48,10 @@ int main()
             }
             break;
         case 2:
-            printf("\n Enter the number to append");
+            printf("\n Enter the number to append ");
             scanf("%d",&app);
             if(l1.append(app)) {
-                printf("\n %d SUCCESSFULLY APPENDED ",app);
+                printf("\n %d appended ",app);
             }
             else {
                 printf("Failed to append");

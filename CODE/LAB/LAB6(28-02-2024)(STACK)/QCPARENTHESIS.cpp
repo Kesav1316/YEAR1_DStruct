@@ -49,6 +49,7 @@ int main() {
                 stack.clear();
                 break;
             case 2:
+                printf("PROGRAM ENDED\n");
                 return 0;
             default:
                 printf("Invalid.\n");

@@ -19,7 +19,7 @@ int main() {
     scanf("%d",element);
     for(*i = 0 ; *i < *size ; (*i )++ ) {
         if(*(a + (*i)) == *element) {
-            printf("ELEMENT FOUND in %d\n",(*i) + 1);
+            printf("ELEMENT FOUND in %d position\n",(*i) + 1);
             return 0;
         }
         

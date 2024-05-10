@@ -1,33 +1,16 @@
-/*
-A. Write a C++ menu-driven program to implement List ADT using a singly linked list. Maintain proper boundary conditions and follow good coding practices. The List ADT has the following operations,
-
-1. Insert Beginning
-2. Insert End
-3. Insert Position
-4. Delete Beginning
-5. Delete End
-6. Delete Position
-7. Search
-8. Display
-9. Display Reverse
-10. Reverse Link
-11. Exit
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
-class List {
-    struct Node {
-        int data;
-        struct Node *next;
-    };
+struct Node 
+{
+    int data;
+    struct Node *next;
+};
 
+class List {
+    public:
     struct Node *newnode = (struct Node *)malloc(sizeof(struct Node));
     struct Node *head;
-
-
-    public:
         List() {
             head = NULL;
         }
@@ -42,117 +25,16 @@ class List {
         void displayreverse();
         int reverselist();
         int size();
-        
+        struct Node *gethead();
     
 
 };
 
-int main() {
-    List l1;
-    int choice;
-    int num;
-    int pos;
-    while(1) {
 
-        printf("\n SINGELY LINKED LIST \n");
-        printf("\n 1. Insert Beginning \n 2. Insert End \n 3. Insert Position");
-        printf("\n 4. Delete Beginning \n 5. Delete End \n 6. Delete Position");
-        printf("\n 7. Search \n 8. Display \n 9. Display Reverse \n 10. Reverse Link \n 11. Exit");
-        printf("\n Enter the choice ");
-        scanf("%d",&choice);
-
-        switch(choice) {
-            case 1:
-                printf("Enter the number ");
-                scanf("%d",&num);
-                if(l1.insert_beg(num)) {
-                    printf("\n Inserted successfully.");
-                }
-                else {
-                    printf("\n Insertion unsuccessful.");
-                }
-                break;
-            
-            case 2:
-                printf("Enter the number ");
-                scanf("%d",&num);
-                if(l1.insert_end(num)) {
-                    printf("\n List empty.");
-                }
-                else if(l1.insert_end(num) == 2) {
-                    printf("Insertion successful.");
-                }
-                break;
-
-            case 3:
-                printf("Enter the number and position to insert ");
-                scanf("%d %d",&num,&pos);
-                if(l1.insert_pos(num , pos)) {
-                    printf("Inserted successfully.");
-                } 
-                else {
-                    printf("Position out of bounds");
-                }
-        
-                break;
-
-            case 4:
-                if(l1.del_beg()) {
-                    printf("Deleted successfully.");
-                }
-                else {
-                    printf("List is empty.");
-                }
-                break;
-            
-            case 5:
-                if(l1.del_end()) {
-                    printf("Deleted successfully.");
-                }
-                else {
-                    printf("The list is empty.");
-                }
-                break;
-            
-            case 6:
-                printf("Enter the position ");
-                scanf("%d",&pos);
-                if(l1.del_pos(pos)) {
-                    printf("Deleted successfully.");
-                }
-                else {
-                    printf("The list is empty.");
-                }
-                break;
-
-            case 7:
-                printf("Enter the number ");
-                scanf("%d",&num);
-                printf("%d \n",l1.search(num));
-                break;
-
-            case 8:
-                l1.display();
-                break;
-            
-            case 9:
-                l1.displayreverse();
-                break;
-            
-            case(10):
-                if(l1.reverselist()) {
-                    printf("Successfully reversed.");
-                }
-                else {
-                    printf("The list is empty.");
-                }
-                break;
-            
-            
-        }
-    }
-
-
+//Getting the head of linked lsit
+struct Node *List::gethead()
+{
+    return head;
 }
 
 //Getting the size of the singely linked list.

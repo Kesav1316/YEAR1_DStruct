@@ -55,7 +55,7 @@ int main() {
         printf("DOUBLEY LINKED LIST \n");
         printf("\n 1. Insert Beginning \n 2. Insert End \n 3. Insert Position");
         printf("\n 4. Delete Beginning \n 5. Delete End \n 6. Delete Position");
-        printf("\n 7. Search \n 8. Display \n 9. Display Reverse \n 10. Reverse Link \n 11. Exit");
+        printf("\n 7. Search \n 8. Display \n 9.Exit");
         printf("\n Enter the choice ");
         scanf("%d",&choice);
 
@@ -103,15 +103,16 @@ int main() {
             printf("Enter the number to search ");
             scanf("%d",&num);
             num = l1.search(num);
-            printf("%d",num);
+            printf("The number is in %d pos \n",num);
             break;
         case 8:
             l1.display();
             break;
         
         case 9:
-            l1.displayreverse();
-            break;
+            printf("PROGRAM ENDED\n");
+            return 0;
+        
 
     }
 
@@ -146,6 +147,7 @@ void Dlist::insertbeg(int num) {
         newnode -> previous = NULL;
         head = newnode;   
         tail = newnode;
+        printf("Inserted %d successfully\n",num);
     }
 
     else {
@@ -154,6 +156,7 @@ void Dlist::insertbeg(int num) {
         newnode -> next = head;
         head -> previous = newnode;
         head = newnode;
+        printf("Inserted %d successfully\n",num);
     }
     
 
@@ -174,6 +177,7 @@ void Dlist::insertend(int num) {
         newnode -> previous = tail;
         newnode -> next = NULL;
         tail = newnode;
+        printf("Inserted %d successfully\n",num);
     }
 }
 
@@ -214,6 +218,7 @@ int Dlist::insertposition(int val, int pos) {
         temp->next->previous = newnode;
     }
     temp->next = newnode;
+    printf("Inserted %d successfully\n",val);
     return 1;
 } 
 
@@ -226,18 +231,20 @@ void Dlist::deletebeg() {
     }
 
     else if(head -> next == NULL) {
+        printf("Deleted %d successfully\n",head->data);
         head = NULL;
 
     }
 
     else {
+        printf("Deleted %d successfully\n",head->data);
         head = head -> next;
         head -> previous = NULL;
     }
 }
 
 //Deleting the node at the end of the doubley linked list.
-//Time complexity => O(1)
+//Time complexity => O(1)x
 void Dlist::deleteend() {
     struct Node *temp = tail->previous;
 
@@ -250,8 +257,10 @@ void Dlist::deleteend() {
     }
 
     else {
+        printf("Deleted %d successfully\n",temp->next->data);
         temp -> next = NULL;
         tail = temp;
+        
     }
 }
 
@@ -305,7 +314,7 @@ int Dlist::search(int num) {
     if (temp == nullptr) {
         return 0;
     }
-    return pos;
+    return pos+1;
 }
 
 
@@ -327,20 +336,3 @@ void Dlist::display() {
 
 }
 
-//Displaying the data of each nodes in reverse in the doubly linked list.
-//Time complexity => O(n)
-void Dlist::displayreverse() {
-    struct Node *temp = tail;
-    if(head == NULL) {
-        printf("List empty.");
-    }
-
-    else {
-
-        while(temp != NULL) {
-            printf("%d\n",temp -> data);
-            temp = temp -> previous;
-        }
-
-    }
-}

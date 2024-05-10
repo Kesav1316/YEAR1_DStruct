@@ -57,7 +57,7 @@ int main() {
 
             case 3:
                 l1.peak();
-                break;
+                break;  
 
             case 4:
                 return 1;

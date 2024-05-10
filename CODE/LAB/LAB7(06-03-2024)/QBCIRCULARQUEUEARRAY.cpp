@@ -36,7 +36,7 @@ int main() {
     int pos;
     while(1) {
 
-        printf("\n STACK ADT \n");
+        printf("\n CIRCULAR QUEUE \n");
         printf("\n 1.Push \n 2.Pop \n 3.peek \n 4.Exit \n");
         scanf("%d",&choice);
 
@@ -56,6 +56,7 @@ int main() {
                 break;
 
             case 4:
+                printf("PROGRAM ENDED\n");
                 return 0;
 
             case 5:
@@ -121,13 +122,13 @@ void queue::dequeue() {
         int b=arr[front];
         rear=-1;
         front=-1;
-        printf("POPPED");
+        printf("DEQUEUED");
     }
 
     else {
         int b=arr[front];
         front=(front+1)%SIZE;
-        printf("POPPED");
+        printf("DEQUEUED");
     }
 
 }
@@ -140,7 +141,7 @@ void queue::peek() {
     }
 
     else {
-        printf("%d",arr[front]);
+        printf("The peek is %d",arr[front]);
     }
 }
 

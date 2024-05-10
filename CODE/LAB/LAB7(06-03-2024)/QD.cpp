@@ -71,6 +71,7 @@ int main() {
                 break;
 
             case 4:
+                printf("PROGRAM ENDED\n");
                 return 1;
                 break;
             
@@ -122,12 +123,14 @@ void List::delete_end() {
 
     else if(front==rear) {
         int b=temp->data;
+        printf("Deleted %d\n",b);
         front=rear=NULL;
         free(temp);
     }
 
     else {
         int b=temp->data;
+        printf("Deleted %d\n",b);
         front=temp->next;
         free(temp);
         rear->next=front;
@@ -143,7 +146,7 @@ void List::peek() {
 
     else {
         int b=front->data;
-        printf("%d",b);
+        printf("Peak is %d\n",b);
     }
 }
 

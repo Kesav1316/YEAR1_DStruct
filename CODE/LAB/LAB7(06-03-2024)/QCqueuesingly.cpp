@@ -66,6 +66,7 @@ int main() {
                 break;
 
             case 4:
+                printf("PROGRAM ENDED\n");
                 return 1;
                 break;
             
@@ -110,9 +111,11 @@ void List::del_beg() {
 
     else {
         temp2 = head;
+        printf("Deleted %d\n",temp2->data);
         temp = head -> next; 
         head = temp;
         free(temp2);
+
     }
 }
 
@@ -123,7 +126,7 @@ void List::peek() {
         printf("Queue empty.");
     }
     else {
-        printf("%d\n",head -> data);
+        printf("Peak is %d\n",head -> data);
     }
 }
 

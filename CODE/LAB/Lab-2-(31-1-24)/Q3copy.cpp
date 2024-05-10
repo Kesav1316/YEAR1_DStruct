@@ -1,3 +1,5 @@
+
+
 /* Imagine a class with a 'n' number of students. Their integer roll numbers are stored in an array in ascending order. There are gaps in the roll number series.  Now, get a roll number from the user and search whether it is present in the array. If present, return the array index + 1. Follow the below approach for searching,
 1) Compare the roll number with the middle element.
   1.1) If present -> return index + 1
@@ -10,66 +12,63 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void ascending(int *arr,int *n){
-    int *first,*second,*tmp;
-    first = (int *)malloc(sizeof(int));
-    second = (int *)malloc(sizeof(int));
+void ascending(int *a,int *n) {
+    int i,j,*tmp;
     tmp = (int *)malloc(sizeof(int));
-    for(*first = 0;*first <*n -1;(*first)++){
-        for(*second = *first + 1;*second < *n;(*second)++){
-            if(*(arr + (*first)) > *(arr + (*second))){
-                *tmp = *(arr + (*first)) ;
-                *(arr + (*first)) = *(arr + (*second));
-                *(arr + (*second)) = *tmp;
+    for( i = 0 ; i < *n-1 ; (i)++) {
+        for( j = 0 ; j < *n-1 ; (j)++) {
+            if ( *(a + (j)) > *(a + (j + 1))) {
+                *tmp = *(a + (j));
+                *(a + (j)) = *(a + (j + 1));
+                *(a + (j + 1)) = *tmp;
             }
         }
     }
 }
 
 int *search(int *array,int *n,int *find){
-    int *Start,*End,*mid;
-    Start = (int *)malloc(sizeof(int));
-    End = (int *)malloc(sizeof(int));
-    *Start = 0;
-    *End = *n;
-    while(*Start <= *End){
-        *mid = (int)((*Start + *End) /2);
+    int begg,end,*mid;
+    begg = 0;
+    end = *n;
+    while(begg <= end){
+        *mid = (int)((begg + end) /2);
         if(*(array + *mid) == *find){
-            printf("Found the Roll Number in pos - %d\n",*mid + 1);
+            printf("ROLL NUMBER FOUND IN %d\n",*mid + 1);
             return mid;
-        }else {
+        }
+        else {
             if(*(array + *mid) < *find){
-                *Start = *mid  + 1;
+                begg = *mid  + 1;
             }else{
-                *End = *mid - 1;
+                end = *mid - 1;
             }
         }
     }
-    printf("Roll number not found :(\n");
+    printf("ROLL NUMBER NOT FOUND\n");
     return mid;
 }
 
 
 int main(){
-    int *n,*array,*var,*find;
+    int i,*n,*a,*rollno;
     n = (int *)malloc(sizeof(int));
+
     printf("Enter the number of students : ");
     scanf("%d",n);
-    var = (int *)malloc(sizeof(int));
-    find = (int *)malloc(sizeof(int));
-    array = (int *)malloc(sizeof(int) * (*n));
-    for(*var  = 0;*var<*n;(*var)++){
-        printf("Enter the roll - %d : ",(*var) + 1);
-        scanf("%d",(array + (*var)));
+
+    rollno = (int *)malloc(sizeof(int));
+    a = (int *)malloc(sizeof(int) * (*n));
+
+    for( i = 0; i<*n ; i++ ) {
+        printf("ENTER ROLL NUMBER %d ",i + 1);
+        scanf("%d",(a + i)); 
     }
-    ascending(array,n);
-    printf("Sorted Roll Numbers = ");
-    for(*var = 0; *var < *n;(*var)++){
-        printf("%d ,",*(array + (*var)));
-    }
-    printf("\nEnter the Roll of the Person to search for : ");
-    scanf("%d",find);
-    search(array,n,find);
+    ascending(a,n);
+
+
+    printf("\nENTER ROLL NUMBER TO SEARCH: ");
+    scanf("%d",rollno);
+    search(a,n,rollno);
     return 0;
 
 }

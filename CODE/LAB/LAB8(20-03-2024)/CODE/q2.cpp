@@ -59,6 +59,7 @@ int main() {
                     break;
                 }
             case 6:
+                printf("PROGRAM ENDED\n");
                 return 0;
             default:
                 printf("Invalid choice\n");

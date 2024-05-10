@@ -2,47 +2,44 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void ascending(int *a,int *n) {
-    int *i,*j,*tmp;
-    i = (int *)malloc(sizeof(int));
-    j = (int *)malloc(sizeof(int));
+void ascending(int *arr,int *n){
+    int *i,*first,*second,*tmp;
+    first = (int *)malloc(sizeof(int));
+    second = (int *)malloc(sizeof(int));
     tmp = (int *)malloc(sizeof(int));
-    for( *i = 0 ; *i < *n-1 ; (*i)++) {
-        for( *j = 0 ; *j < *n-1 ; (*j)++) {
-            if ( *(a + (*j)) > *(a + (*j + 1))) {
-                *tmp = *(a + (*j));
-                *(a + (*j)) = *(a + (*j + 1));
-                *(a + (*j + 1)) = *tmp;
+    for(*first = 0;*first <*n -1;(*first)++){
+        for(*second = *first + 1;*second < *n;(*second)++){
+            if(*(arr + (*first)) > *(arr + (*second))){
+                *tmp = *(arr + (*first)) ;
+                *(arr + (*first)) = *(arr + (*second));
+                *(arr + (*second)) = *tmp;
             }
         }
     }
-    printf("SORTED ARRAY \n");
-    for(*i = 0;*i<*n;(*i)++) {
-        printf("a[%d] %d \n",*i,*(a + (*i)));
+    for(*i = 0; *i < *n;(*i)++){
+        printf("%d ",*(arr + (*i)));
     }
-
+    printf("\n");
 }
-
-void descending(int *a,int *n) {
-    int *i,*j,*tmp;
-    i = (int *)malloc(sizeof(int));
-    j = (int *)malloc(sizeof(int));
+void descending(int *arr,int *n){
+    int *i,*first,*second,*tmp;
+    first = (int *)malloc(sizeof(int));
+    second = (int *)malloc(sizeof(int));
     tmp = (int *)malloc(sizeof(int));
-    for( *i = 0 ; *i < *n-1 ; (*i)++) {
-        for( *j = 0 ; *j < *n-1 ; (*j)++) {
-            if ( *(a + (*j)) < *(a + (*j + 1))) {
-                *tmp = *(a + (*j));
-                *(a + (*j)) = *(a + (*j + 1));
-                *(a + (*j + 1)) = *tmp;
+    for(*first = 0;*first <*n -1;(*first)++){
+        for(*second = *first + 1;*second < *n;(*second)++){
+            if(*(arr + (*first)) < *(arr + (*second))){
+                *tmp = *(arr + (*first)) ;
+                *(arr + (*first)) = *(arr + (*second));
+                *(arr + (*second)) = *tmp;
             }
         }
     }
-    printf("SORTED ARRAY \n");
-    for(*i = 0;*i<*n;(*i)++) {
-        printf("a[%d] %d \n",*i,*(a + (*i)));
+    for(*i = 0; *i < *n;(*i)++){
+        printf("%d ",*(arr + (*i)));
     }
-
 }
+
 
 int main() {
     int option = 0;
@@ -60,7 +57,7 @@ int main() {
         case 1:
             printf("Enter the size of the array ");
             scanf("%d",n);
-            a = (int *)malloc(sizeof(int));
+            a = (int *)malloc(sizeof(int) * (*n));
             for( *i = 0;*i< *n;(*i)++) {
                 printf("Enter a[%d]",*i);
                 scanf("%d",a + (*i));

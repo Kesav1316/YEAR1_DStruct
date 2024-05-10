@@ -75,6 +75,7 @@ int main() {
             l1.search(num);
             break;
         case 7:
+            printf("PROGRAM ENDED\n");
             exit(0);
             break;
         default:

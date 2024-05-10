@@ -46,8 +46,8 @@ void Link::display()
     temp = head;
     
     while(temp!=NULL) {
-    printf("%d ",temp->data);
-    temp = temp->next;
+        printf("%d ",temp->data);
+        temp = temp->next;
     }
 
 }

@@ -1,0 +1,11 @@
+LAB 2
+2)Q2copy is working . Error in malloc .
+3)Q3copy is working . 
+
+LAB 4
+Changed insertend
+aim
+Functions used 
+algorithm
+time complexity
+code
